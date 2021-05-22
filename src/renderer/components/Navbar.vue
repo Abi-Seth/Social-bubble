@@ -1,6 +1,6 @@
 <template>
-    <div id="entire_navbar">
-        <div class="logo_side">
+    <div id="entire_navbar" style="-webkit-app-region: drag">
+        <div class="logo_side" style="-webkit-app-region: no-drag">
             <img src="../assets/logo.png" alt="">
             <h1>social<span>Bubble</span></h1>
         </div>
@@ -8,12 +8,12 @@
             <input type="text" placeholder="Search social app">
         </div>
         <div class="exit_side">
-            <div class="min">
+            <div class="min" @click="minimizeApp" style="-webkit-app-region: no-drag">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2">
                     <line id="Line_2" data-name="Line 2" x2="12" transform="translate(0 1)" fill="none" stroke="#fff" stroke-width="2"/>
                 </svg>
             </div>
-            <div class="exp">
+            <div class="exp" @click="fullWindow" style="-webkit-app-region: no-drag">
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
                     <g id="Rectangle_2" data-name="Rectangle 2" fill="none" stroke="#fff" stroke-width="2">
                         <rect width="10" height="10" stroke="none"/>
@@ -21,7 +21,7 @@
                     </g>
                 </svg>
             </div>
-            <div class="ext" @click="closeApp">
+            <div class="ext" @click="closeApp" style="-webkit-app-region: no-drag">
                 <svg xmlns="http://www.w3.org/2000/svg" width="9.899" height="9.899" viewBox="0 0 9.899 9.899">
                     <line id="Line_2" data-name="Line 2" x2="12" transform="translate(9.192 9.192) rotate(-135)" fill="none" stroke="#fff" stroke-width="2"/>
                     <line id="Line_3" data-name="Line 3" x2="12" transform="translate(9.192 0.707) rotate(135)" fill="none" stroke="#fff" stroke-width="2"/>
@@ -32,24 +32,33 @@
 </template>
 
 <script>
-
-import { reactive } from 'vue'
+import { exit, min, fit, float } from '../renderer.js'
 
 export default {
     name: 'Navbar',
-
-    setup() {
-        const state = reactive({
-
-        })
-
-        function closeApp() {
-            
-        }
-
+    data() {
         return {
-            state,
-            closeApp
+            min: true,
+            max: false,
+        }
+    },
+    methods: {
+        closeApp() {
+            exit()
+        },
+        minimizeApp() {
+            min()
+        },
+        fullWindow() {
+            if (this.min == true) {
+                this.min == !this.min
+                this.max == !this.max
+                fit()
+            } else {
+                this.min == !this.min
+                this.max == !this.max
+                float()
+            }
         }
     }
 }
@@ -61,6 +70,7 @@ export default {
         height: 2.3em;
         display: flex;
         align-items: center;
+        position: relative;
 
         .logo_side {
             width: 20%;
@@ -79,6 +89,7 @@ export default {
                 font-family: $poppins;
                 font-size: 0.9em;
                 font-weight: 500;
+                user-select: none;
 
                 span {
                     color: $orange;
@@ -97,24 +108,25 @@ export default {
                 padding: 0.35em 12em 0.35em 1em;
                 border: none;
                 border-radius: 0.2em;
-                background-color: $searchColor;
-                color: $orange;
+                background-color: rgba(255, 253, 253, 0.082);
+                color: $pureWhite;
                 font-family: $poppins;
                 -webkit-app-region: no-drag;
 
 
             }
             & input:focus {
-                color: $darkWhite;
+                color: $pureWhite;
             }
         }
 
         .exit_side {
-            width: 15%;
+            width: 8em;
             height: 100%;
             display: flex;
             align-items: center;
-            // background-color: red;
+            position: absolute;
+            right: 0.5em;
 
             .min, .exp, .ext {
                 -webkit-app-region: no-drag;
