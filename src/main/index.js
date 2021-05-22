@@ -22,7 +22,7 @@ function createWindow () {
     width: 1000,
     height: 680,
     minHeight: 600,
-    minWidth: 300,
+    minWidth: 400,
     useContentSize: true,
     frame: false,
     webPreferences: {
