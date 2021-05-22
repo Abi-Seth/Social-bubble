@@ -1,5 +1,5 @@
 <template>
-    <div id="entire_navbar">
+    <div id="entire_navbar" style="-webkit-app-region: drag">
         <div class="logo_side">
             <img src="../assets/logo.png" alt="">
             <h1>social<span>Bubble</span></h1>
@@ -105,7 +105,7 @@ export default {
 
             }
             & input:focus {
-                color: $darkWhite;
+                color: $darkMain;
             }
         }
 
