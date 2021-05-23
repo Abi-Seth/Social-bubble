@@ -5,7 +5,7 @@
             <h1>social<span>Bubble</span></h1>
         </div>
         <div class="search_side">
-            <input type="text" placeholder="Search social app">
+            <input type="text" placeholder="Search application">
         </div>
         <div class="exit_side">
             <div class="min" @click="minimizeApp" style="-webkit-app-region: no-drag">
@@ -38,8 +38,7 @@ export default {
     name: 'Navbar',
     data() {
         return {
-            min: true,
-            max: false,
+            fitState: true,
         }
     },
     methods: {
@@ -50,13 +49,11 @@ export default {
             min()
         },
         fullWindow() {
-            if (this.min == true) {
-                this.min == !this.min
-                this.max == !this.max
+            if (this.fitState) {
+                this.fitState = !this.fitState
                 fit()
             } else {
-                this.min == !this.min
-                this.max == !this.max
+                this.fitState = !this.fitState
                 float()
             }
         }
@@ -105,7 +102,8 @@ export default {
             justify-content: center;
 
             & input {
-                padding: 0.35em 12em 0.35em 1em;
+                width: 50%;
+                padding: 0.35em 1em;
                 border: none;
                 border-radius: 0.2em;
                 background-color: rgba(255, 253, 253, 0.082);
@@ -160,4 +158,5 @@ export default {
         }
 
     }
+
 </style>
