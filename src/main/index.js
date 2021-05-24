@@ -26,7 +26,8 @@ function createWindow () {
     useContentSize: true,
     frame: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true
     }
   })
 
@@ -35,9 +36,17 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+
 }
 
 app.on('ready', createWindow)
+
+//to allow secure login to all social medias that don't support electron
+// app.commandLine.appendSwitch('--ignore-certificate-errors', 'true')
+
+// app.commandLine.appendSwitch('remote-debugging-port', '8315')
+// app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1')
+// app.commandLine.appendSwitch('proxy-bypass-list', '<local>;*.google.com;*foo.com;1.2.3.4:5678')
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
