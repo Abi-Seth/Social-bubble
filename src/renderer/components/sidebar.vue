@@ -1,6 +1,6 @@
 <template>
    <div id="entire_app__sidebar">
-       <h1>Am the sidebar</h1>
+       <h1>Sidebar content</h1>
    </div>
 </template>
 
