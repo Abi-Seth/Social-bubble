@@ -4,7 +4,7 @@
         <div class="entire_app__body_container">
             <div class="sidebar_container">
                 <div class="open_apps">
-
+                    <h1>Open applications</h1>
                 </div>
             </div>
             <div class="body_container">
