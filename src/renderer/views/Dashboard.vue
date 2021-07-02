@@ -84,7 +84,6 @@ export default {
                 background-color: $darkMinor;
             }
 
-            
         }
 
         & .app_container::-webkit-scrollbar {
